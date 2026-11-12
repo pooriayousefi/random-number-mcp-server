@@ -83,7 +83,8 @@ namespace pooriayousefi::mcp
         return gen;
     }
 
-    Expected<Json, Error> handle_random(const Json& args, const std::function<double()>& gen_fn)
+    template <typename Generator>
+    Expected<Json, Error> handle_random(const Json& args, Generator&& gen_fn)
     {
         Expected<Json, Error> result{};
 
@@ -129,7 +130,7 @@ namespace pooriayousefi::mcp
             [a, b]()
             {
                 std::uniform_int_distribution<int> dist(a, b);
-                return static_cast<double>(dist(random_engine()));
+                return dist(random_engine());
             }
         );
 
@@ -173,7 +174,7 @@ namespace pooriayousefi::mcp
                 [p]()
                 {
                     std::bernoulli_distribution dist(p);
-                    return dist(random_engine()) ? 1.0 : 0.0;
+                    return dist(random_engine()) ? 1 : 0;
                 }
             );
         }
@@ -198,7 +199,7 @@ namespace pooriayousefi::mcp
                 [t, p]()
                 {
                     std::binomial_distribution<int> dist(t, p);
-                    return static_cast<double>(dist(random_engine()));
+                    return dist(random_engine());
                 }
             );
         }
@@ -222,7 +223,7 @@ namespace pooriayousefi::mcp
                 [p]()
                 {
                     std::geometric_distribution<int> dist(p);
-                    return static_cast<double>(dist(random_engine()));
+                    return dist(random_engine());
                 }
             );
         }
@@ -247,7 +248,7 @@ namespace pooriayousefi::mcp
                 [k, p]()
                 {
                     std::negative_binomial_distribution<int> dist(k, p);
-                    return static_cast<double>(dist(random_engine()));
+                    return dist(random_engine());
                 }
             );
         }
@@ -271,7 +272,7 @@ namespace pooriayousefi::mcp
                 [mean]()
                 {
                     std::poisson_distribution<int> dist(mean);
-                    return static_cast<double>(dist(random_engine()));
+                    return dist(random_engine());
                 }
             );
         }
