@@ -22,9 +22,9 @@
 //    - Single value response for count=1, values array otherwise
 //
 //  Build:
-//    clang++ -std=c++20 -O3 -pthread -I include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server
-//    clang++ -std=c++20 -O3 -pthread -I include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server -lws2_32 (Windows)
-//    g++     -std=c++20 -O3 -pthread -I include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server
+//    clang++ -std=c++20 -O3 -pthread -I external/mcpxx/include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server
+//    clang++ -std=c++20 -O3 -pthread -I external/mcpxx/include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server -lws2_32 (Windows)
+//    g++     -std=c++20 -O3 -pthread -I external/mcpxx/include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server
 //
 //  Usage:
 //    ./bin/random_number_mcp_tool_server                      (stdio; run from project root)

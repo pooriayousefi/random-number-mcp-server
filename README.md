@@ -8,7 +8,7 @@ A standalone C++20 Model Context Protocol (MCP) server for random sampling from 
 
 ## Dependency
 
-The shared MCP implementation is provided by [mcpxx](https://github.com/pooriayousefi/mcpxx), pinned as a Git submodule at commit `8d3e971072c263dd5132c5b48e44c15926d21190` under `external/mcpxx`.
+The shared MCP implementation is provided by [mcpxx](https://github.com/pooriayousefi/mcpxx), pinned as a Git submodule at commit `c7753ec6b15eb15b6ecdfed82b93ace745ba0c6b` under `external/mcpxx`.
 
 ## Clone and build
 
@@ -21,7 +21,10 @@ make
 Or compile directly:
 
 ```sh
-clang++ -std=c++20 -O2 -pthread -I external/mcpxx/include src/random_number_mcp_tool_server.cpp -o bin/random_number_mcp_tool_server
+clang++ -std=c++20 -O2 -pthread -Wall -Wextra -Wpedantic \\
+  -I external/mcpxx/include \\
+  src/random_number_mcp_tool_server.cpp \\
+  -o bin/random_number_mcp_tool_server
 ```
 
 On Windows with MinGW, add `-lws2_32`.
